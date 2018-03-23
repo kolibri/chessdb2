@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>User Profile</h1>
+
+    <section class="profile">
+        <dl>
+            <dt>{{ 'profile.label.username'|trans }}</dt>
+            <dd id="username">{{ user.username }}</dd>
+            <dt>{{ 'profile.label.email'|trans }}</dt>
+            <dd id="email">{{ user.email }}</dd>
+            <dt>{{ 'profile.label.aliases'|trans }}</dt>
+            <dd id="aliases">{{ user.aliases|join(', ') }}</dd>
+        </dl>
+    </section>
+{% endblock %}

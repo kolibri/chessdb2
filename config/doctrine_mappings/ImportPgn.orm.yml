@@ -1,0 +1,23 @@
+App\Entity\ImportPgn:
+    type: entity
+    table: import_pgn
+    id:
+        uuid:
+            type: uuid
+            id: true
+            generator:
+                strategy: CUSTOM
+            customIdGenerator:
+                class: \Ramsey\Uuid\Doctrine\UuidGenerator
+    fields:
+        pgnString:
+            type: text
+        imported:
+            type: datetime
+            nullable: true
+    manyToOne:
+        user:
+            targetEntity: App\Entity\User
+            joinColumn:
+                name: user
+                referencedColumnName: uuid

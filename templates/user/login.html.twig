@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ 'login.title'|trans }}</h1>
+    <section class="login">
+        {% if errors %}
+            <div>{{ errors.messageKey|trans(errors.messageData) }}</div>
+        {% endif %}
+
+        <form action="{{ path('login') }}" method="post">
+            <label for="username">{{ 'login.form.label.username'|trans }}:</label>
+            <input type="text" id="username" name="_username" value="{{ username }}"/>
+
+            <label for="password">{{ 'login.form.label.password'|trans }}:</label>
+            <input type="password" id="password" name="_password"/>
+
+            <button type="submit">{{ 'login.form.label.submit'|trans }}</button>
+        </form>
+    </section>
+{% endblock %}
+

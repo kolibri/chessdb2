@@ -1,0 +1,30 @@
+App\Entity\User:
+    type: entity
+    table: user
+    uniqueConstraints:
+        user_username_unique:
+            columns:
+                - username
+        user_email_unique:
+            columns:
+                - email
+    id:
+        uuid:
+            type: uuid
+            id: true
+            generator:
+                strategy: CUSTOM
+            customIdGenerator:
+                class: \Ramsey\Uuid\Doctrine\UuidGenerator
+    fields:
+        username:
+            type: string
+        password:
+            type: string
+        roles:
+            type: simple_array
+        email:
+            type: string
+        aliases:
+            type: simple_array
+            nullable: true
