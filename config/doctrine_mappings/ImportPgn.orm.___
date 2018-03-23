@@ -1,4 +1,4 @@
-App\Entity\ImportPgn:
+App\Import\Entity\ImportPgn:
     type: entity
     table: import_pgn
     id:
@@ -17,7 +17,7 @@ App\Entity\ImportPgn:
             nullable: true
     manyToOne:
         user:
-            targetEntity: App\Entity\User
+            targetEntity: App\User\Entity\User
             joinColumn:
                 name: user
                 referencedColumnName: uuid

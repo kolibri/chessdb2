@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace App\Form\Type;
+namespace App\User\Form;
 
-use App\Entity\User;
+use App\User\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;

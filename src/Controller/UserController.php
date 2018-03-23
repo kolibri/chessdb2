@@ -2,18 +2,20 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Form\Type\UserRegistrationType;
+use App\User\Entity\User;
+use App\User\Form\UserRegistrationType;
 use App\User\RegistrationHandler;
+use App\User\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends Controller
 {
     /** @Route("/register", name="register") */
-    public function register(Request $request, RegistrationHandler $handler)
+    public function register(Request $request, RegistrationHandler $handler): Response
     {
         $form = $this->createForm(UserRegistrationType::class);
         $form->handleRequest($request);
@@ -32,8 +34,10 @@ class UserController extends Controller
     }
 
     /** @Route("/profile/{username}"), name="profile" */
-    public function profile(User $user)
+    public function profile(string $username, UserRepository $repository)
     {
+        $user = $repository->loadByName($username);
+
         return $this->render('user/profile.html.twig', ['user' => $user]);
     }
 

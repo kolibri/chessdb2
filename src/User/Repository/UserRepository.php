@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace App\Repository;
+namespace App\User\Repository;
 
-use App\Entity\User;
+use App\User\Entity\User;
 use Doctrine\Common\Persistence\ObjectManager;
 
 class UserRepository

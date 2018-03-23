@@ -2,8 +2,8 @@
 
 namespace App\User;
 
-use App\Entity\User;
-use App\Repository\UserRepository;
+use App\User\Entity\User;
+use App\User\Repository\UserRepository;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 
 class RegistrationHandler

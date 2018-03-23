@@ -1,17 +1,58 @@
 <?php declare(strict_types=1);
 
-namespace App\Entity;
+namespace App\User\Entity;
 
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\CustomIdGenerator;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\GeneratedValue;
+use Doctrine\ORM\Mapping\Id;
 use Ramsey\Uuid\Uuid;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+/**
+ * @Entity
+ */
 class User implements UserInterface
 {
+    /**
+     * @var Uuid
+     *
+     * @Id
+     * @Column(type="uuid", unique=true)
+     * @GeneratedValue(strategy="CUSTOM")
+     * @CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
+     */
     private $uuid;
+
+    /**
+     * @var string
+     * @Column
+     */
     private $username;
+
+    /**
+     * @var string
+     * @Column
+     */
     private $email;
+
+    /**
+     * @var string
+     * @Column
+     */
     private $password;
+
+    /**
+     * @var array
+     * @Column(type="simple_array")
+     */
     private $aliases;
+
+    /**
+     * @var array
+     * @Column(type="simple_array")
+     */
     private $roles;
 
     public function __construct(
